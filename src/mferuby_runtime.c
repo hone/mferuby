@@ -20,3 +20,18 @@ mrb_aspec TMRB_ARGS_REQ(uint32_t count) {
 mrb_aspec TMRB_ARGS_NONE() {
     return MRB_ARGS_NONE();
 }
+
+#include <mruby/string.h>
+mrb_int TRSTRING_LEN(mrb_value s) {
+    return RSTRING_LEN(s);
+}
+
+const char *TRSTRING_PTR(mrb_value s) {
+    return RSTRING_PTR(s);
+}
+
+#include <mruby/array.h>
+// Array
+mrb_int TRARRAY_LEN(mrb_value array) {
+    return RARRAY_LEN(array);
+}

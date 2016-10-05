@@ -1,13 +1,10 @@
 [package]
-name = "mferuby"
+name = "libmruby-sys"
 version = "0.1.0"
 authors = ["Terence Lee <hone02@gmail.com>"]
 
 [dependencies]
-libc = "0.2.0"
-
-[dependencies.libmruby-sys]
-path = "../libmruby-sys"
+libc = "*"
 
 [lib]
 crate-type = ["lib"]
