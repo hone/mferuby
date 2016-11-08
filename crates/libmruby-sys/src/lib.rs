@@ -19,6 +19,8 @@ extern {
     pub fn mrb_define_module_function(mrb: *mut mrb_state, klass: *mut RClass, name: *const c_char, function: mrb_func_t, spec: mrb_aspec);
     pub fn mrb_define_method(mrb: *mut mrb_state, klass: *mut RClass, name: *const c_char, function: mrb_func_t, spec: mrb_aspec);
     pub fn mrb_get_args(mrb: *mut mrb_state, format: mrb_args_format, ...) -> mrb_int;
+    pub fn mrb_data_object_alloc(mrb_state: *mut mrb_state, klass: *mut c_void, datap: *mut c_void, mrb_type: *const mrb_data_type) -> *mut mrb_value;
+
     // Array
     pub fn mrb_ary_ref(mrb: *mut mrb_state, array: mrb_value, length: mrb_int) -> mrb_value;
     #[link_name = "TRARRAY_LEN"]
@@ -42,6 +44,9 @@ extern {
     // mrb_state accessor
     #[link_name = "tmrb_state_object_class"]
     pub fn mrb_state_object_class(mrb: *mut mrb_state) -> *mut RClass;
+
+    #[link_name = "tmrb_data_init"]
+    pub fn mrb_data_init(v: mrb_value, ptr: *mut c_void, mrb_type: *const mrb_data_type);
 }
 
 #[allow(non_camel_case_types)]
@@ -72,11 +77,16 @@ pub type RArray = c_void;
 
 // Data
 pub type RData = c_void;
+
+pub type data_free_func = extern "C" fn(mrb: *mut mrb_state, map: *mut c_void);
+
 #[repr(C)]
 pub struct mrb_data_type {
-    pub struct_name: *const c_char,
-    pub dfree: *mut c_void,
+    pub dtype: *const c_char,
+    pub free: data_free_func,
 }
+
+unsafe impl Sync for mrb_data_type {}
 
 // Value
 #[repr(C)]
