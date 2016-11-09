@@ -42,6 +42,9 @@ extern {
     #[link_name = "TMRB_SET_INSTANCE_TT"]
     pub fn MRB_SET_INSTANCE_TT(class: *mut RClass, tt: mrb_vtype);
 
+    // Data
+    pub fn mrb_data_object_alloc(mrb_state: *mut mrb_state, klass: *mut RClass, datap: *mut c_void, mrb_type: *const mrb_data_type) -> *mut RData;
+
     // mrb_state accessor
     #[link_name = "tmrb_state_object_class"]
     pub fn mrb_state_object_class(mrb: *mut mrb_state) -> *mut RClass;

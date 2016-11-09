@@ -12,10 +12,10 @@ impl Mrb {
         Mrb { mrb: mrb_arg }
     }
 
-    pub fn data_object_alloc<T>(&self, klass: sys::mrb_value, data: Box<T>, mrb_type: &sys::mrb_data_type) -> *mut sys::RData {
+    pub fn data_object_alloc<T>(&self, klass: *mut sys::RClass, data: Box<T>, mrb_type: &sys::mrb_data_type) -> *mut sys::RData {
         unsafe {
             sys::mrb_data_object_alloc(self.mrb,
-                                       mem::transmute(&klass),
+                                       klass,
                                        mem::transmute(data),
                                        mrb_type)
         }

@@ -1,10 +1,5 @@
 #include <mruby/compile.h>
 #include <mruby/value.h>
-#include <mruby/data.h>
-
-void tmrb_data_init(mrb_value v, void *ptr, const mrb_data_type *type) {
-    mrb_data_init(v, ptr, type);
-}
 
 mrb_value tmrb_float_value(struct mrb_state *mrb, mrb_float f) {
     return mrb_float_value(mrb, f);
@@ -52,6 +47,9 @@ mrb_int TRARRAY_LEN(mrb_value array) {
 
 #include <mruby/data.h>
 // Data
+void tmrb_data_init(mrb_value v, void *ptr, const mrb_data_type *type) {
+    mrb_data_init(v, ptr, type);
+}
 
 #include <mruby/class.h>
 // Class
