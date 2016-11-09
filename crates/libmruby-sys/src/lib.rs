@@ -19,7 +19,8 @@ extern {
     pub fn mrb_define_module_function(mrb: *mut mrb_state, klass: *mut RClass, name: *const c_char, function: mrb_func_t, spec: mrb_aspec);
     pub fn mrb_define_method(mrb: *mut mrb_state, klass: *mut RClass, name: *const c_char, function: mrb_func_t, spec: mrb_aspec);
     pub fn mrb_get_args(mrb: *mut mrb_state, format: mrb_args_format, ...) -> mrb_int;
-    pub fn mrb_data_object_alloc(mrb_state: *mut mrb_state, klass: *mut RClass, datap: *mut c_void, mrb_type: *const mrb_data_type) -> *mut RData;
+    #[link_name = "tmrb_obj_value"]
+    pub fn mrb_obj_value(p: *mut libc::c_void) -> mrb_value;
 
     // Array
     pub fn mrb_ary_ref(mrb: *mut mrb_state, array: mrb_value, length: mrb_int) -> mrb_value;

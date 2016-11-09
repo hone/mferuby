@@ -26,6 +26,10 @@ mrb_aspec TMRB_ARGS_NONE() {
     return MRB_ARGS_NONE();
 }
 
+mrb_value tmrb_obj_value(void *p) {
+    return mrb_obj_value(p);
+}
+
 // mrb_state accessor
 struct RClass *tmrb_state_object_class(struct mrb_state *mrb) {
     return mrb->object_class;
