@@ -2,6 +2,9 @@ pub extern crate libmruby_sys as sys;
 
 pub extern crate libc;
 
+pub mod mrb;
+pub use mrb::Mrb;
+
 #[macro_export]
 macro_rules! cstr {
     ( $slice:expr ) => {
