@@ -41,6 +41,14 @@ extern {
     // Class
     #[link_name = "TMRB_SET_INSTANCE_TT"]
     pub fn MRB_SET_INSTANCE_TT(class: *mut RClass, tt: mrb_vtype);
+    #[link_name = "mrb_class_get"]
+    pub fn mrb_class_get(mrb: *mut mrb_state, name: *const c_char) -> *mut RClass;
+    #[link_name = "mrb_class_get_under"]
+    pub fn mrb_class_get_under(mrb: *mut mrb_state, outer: *mut RClass, name: *const c_char) -> *mut RClass;
+    #[link_name = "mrb_module_get"]
+    pub fn mrb_module_get(mrb: *mut mrb_state, name: *const c_char) -> *mut RClass;
+    #[link_name = "mrb_module_get_under"]
+    pub fn mrb_module_get_under(mrb: *mut mrb_state, outer: *mut RClass, name: *const c_char) -> *mut RClass;
 
     // Data
     pub fn mrb_data_object_alloc(mrb_state: *mut mrb_state, klass: *mut RClass, datap: *mut c_void, mrb_type: *const mrb_data_type) -> *mut RData;
