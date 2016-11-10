@@ -51,6 +51,10 @@ void tmrb_data_init(mrb_value v, void *ptr, const mrb_data_type *type) {
     mrb_data_init(v, ptr, type);
 }
 
+void *tmrb_data_get_ptr(mrb_state *mrb, mrb_value value, const mrb_data_type* type) {
+    return mrb_data_get_ptr(mrb, value, type);
+}
+
 #include <mruby/class.h>
 // Class
 void TMRB_SET_INSTANCE_TT(struct RClass *class, enum mrb_vtype type) {

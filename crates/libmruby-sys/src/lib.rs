@@ -51,7 +51,9 @@ extern {
     pub fn mrb_module_get_under(mrb: *mut mrb_state, outer: *mut RClass, name: *const c_char) -> *mut RClass;
 
     // Data
-    pub fn mrb_data_object_alloc(mrb_state: *mut mrb_state, klass: *mut RClass, datap: *mut c_void, mrb_type: *const mrb_data_type) -> *mut RData;
+    pub fn mrb_data_object_alloc(mrb: *mut mrb_state, klass: *mut RClass, datap: *mut c_void, mrb_type: *const mrb_data_type) -> *mut RData;
+    #[link_name = "tmrb_data_get_ptr"]
+    pub fn mrb_data_get_ptr(mrb: *mut mrb_state, value: mrb_value, mrb_type: *const mrb_data_type) -> *mut RData;
 
     // mrb_state accessor
     #[link_name = "tmrb_state_object_class"]
