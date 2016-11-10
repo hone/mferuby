@@ -13,6 +13,14 @@ mrb_value tmrb_nil_value() {
     return mrb_nil_value();
 }
 
+mrb_value tmrb_true_value() {
+    return mrb_true_value();
+}
+
+mrb_value tmrb_false_value() {
+    return mrb_false_value();
+}
+
 mrb_aspec TMRB_ARGS_REQ(uint32_t count) {
     return MRB_ARGS_REQ(count);
 }

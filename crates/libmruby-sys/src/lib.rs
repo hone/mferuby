@@ -5,6 +5,10 @@ use libc::{c_void, c_char, c_int, c_double};
 extern {
     #[link_name = "tmrb_nil_value"]
     pub fn nil() -> mrb_value;
+    #[link_name = "tmrb_true_value"]
+    pub fn mrb_true() -> mrb_value;
+    #[link_name = "tmrb_false_value"]
+    pub fn mrb_false() -> mrb_value;
     #[link_name = "tmrb_fixnum_value"]
     pub fn fixnum(i: c_int) -> mrb_value;
     #[link_name = "tmrb_float_value"]
