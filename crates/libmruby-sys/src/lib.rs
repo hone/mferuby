@@ -15,7 +15,6 @@ extern {
     pub fn float(mrb: *mut mrb_state, f: c_double) -> mrb_value;
 
     pub fn mrb_open() -> *mut mrb_state;
-    pub fn mrb_str_new_cstr(mrb: *mut mrb_state, c_str: *const c_char) -> mrb_value;
     pub fn mrb_define_module(mrb: *mut mrb_state, name: *const c_char) -> *mut RClass;
     pub fn mrb_define_class(mrb: *mut mrb_state, name: *const c_char, super_class: *mut RClass) -> *mut RClass;
     pub fn mrb_define_class_under(mrb: *mut mrb_state, outer: *mut RClass, name: *const c_char, super_class: *mut RClass) -> *mut RClass;
@@ -32,6 +31,7 @@ extern {
     pub fn RARRAY_LEN(array: mrb_value) -> mrb_int;
     // String
     pub fn mrb_str_to_cstr(mrb: *mut mrb_state, mrb: mrb_value) -> *mut c_char;
+    pub fn mrb_str_new_cstr(mrb: *mut mrb_state, c_str: *const c_char) -> mrb_value;
     #[link_name = "TRSTRING_LEN"]
     pub fn RSTRING_LEN(string: mrb_value) -> mrb_int;
     #[link_name = "TRSTRING_PTR"]
