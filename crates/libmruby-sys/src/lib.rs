@@ -26,6 +26,8 @@ extern {
     pub fn mrb_obj_value(p: *mut libc::c_void) -> mrb_value;
 
     // Array
+    pub fn mrb_ary_new(mrb: *mut mrb_state) -> mrb_value;
+    pub fn mrb_ary_push(mrb: *mut mrb_state, array: mrb_value, value: mrb_value);
     pub fn mrb_ary_ref(mrb: *mut mrb_state, array: mrb_value, length: mrb_int) -> mrb_value;
     #[link_name = "TRARRAY_LEN"]
     pub fn RARRAY_LEN(array: mrb_value) -> mrb_int;
