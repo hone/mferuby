@@ -67,6 +67,10 @@ extern {
 
     #[link_name = "tmrb_data_init"]
     pub fn mrb_data_init(v: mrb_value, ptr: *mut c_void, mrb_type: *const mrb_data_type);
+
+    pub fn mrb_raise(mrb: *mut mrb_state, class: *mut RClass, name: *const c_char);
+    #[link_name = "TE_ARGUMENT_ERROR"]
+    pub fn E_ARGUMENT_ERROR(mrb: *mut mrb_state) -> *mut RClass;
 }
 
 #[allow(non_camel_case_types)]

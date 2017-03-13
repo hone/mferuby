@@ -68,3 +68,8 @@ void *tmrb_data_get_ptr(mrb_state *mrb, mrb_value value, const mrb_data_type* ty
 void TMRB_SET_INSTANCE_TT(struct RClass *class, enum mrb_vtype type) {
     MRB_SET_INSTANCE_TT(class, type);
 }
+
+#include <mruby.h>
+struct RClass *TE_ARGUMENT_ERROR(mrb_state *mrb) {
+    return mrb_exc_get(mrb, "ArgumentError");
+}
